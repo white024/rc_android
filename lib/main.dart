@@ -17,13 +17,15 @@ import 'package:rc_android/providers/takemessage_provider.dart';
 import 'package:rc_android/providers/updateuser_provider.dart';
 import 'package:rc_android/providers/uploadimage_provider.dart';
 import 'package:rc_android/providers/user_provider.dart';
-
+import 'package:flutter/services.dart';
 import 'package:rc_android/providers/userlistu_provider.dart';
 import 'package:rc_android/providers/userstat_provider.dart';
+import 'package:rc_android/public/appstate.dart';
 import 'package:rc_android/public/stat.dart';
 //import 'package:rc_android/GirisEkranlari/LoginAdmin.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -33,38 +35,40 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => admin_provider()),
-        ChangeNotifierProvider(create: (_) => user_provider()),
-        ChangeNotifierProvider(create: (_) => adduser_provider()),
-        ChangeNotifierProvider(create: (_) => delete_provider()),
-        ChangeNotifierProvider(create: (_) => updateuser_provider()),
-        ChangeNotifierProvider(create: (_) => userlistU_provider()),
-        ChangeNotifierProvider(create: (_) => takemessage_provider()),
-        ChangeNotifierProvider(create: (_) => sendmessage_provider()),
-        ChangeNotifierProvider(create: (_) => userstat_provider()),
-        ChangeNotifierProvider(create: (_) => deletemessage_provider()),
-        ChangeNotifierProvider(create: (_) => addimage_provider()),
-      ],
-      child: MaterialApp(
-        title: 'Home',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+    return AppSystemManager(
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => admin_provider()),
+          ChangeNotifierProvider(create: (_) => user_provider()),
+          ChangeNotifierProvider(create: (_) => adduser_provider()),
+          ChangeNotifierProvider(create: (_) => delete_provider()),
+          ChangeNotifierProvider(create: (_) => updateuser_provider()),
+          ChangeNotifierProvider(create: (_) => userlistU_provider()),
+          ChangeNotifierProvider(create: (_) => takemessage_provider()),
+          ChangeNotifierProvider(create: (_) => sendmessage_provider()),
+          ChangeNotifierProvider(create: (_) => userstat_provider()),
+          ChangeNotifierProvider(create: (_) => deletemessage_provider()),
+          ChangeNotifierProvider(create: (_) => addimage_provider()),
+        ],
+        child: MaterialApp(
+          title: 'Home',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          routes: {
+            'alogin': (_) => const LoginAdmin(),
+            'adduser': (_) => const AddUser(),
+            'ulogin': (_) => const LoginUser(),
+            'home': (_) => const Homes(),
+            'ulistu': (_) => const UserListU(),
+            'alista': (_) => const UserListA(),
+            'message': (_) => const MessagesU(),
+            'addimage': (_) => const addimage(),
+          },
+          initialRoute: 'home',
+          //login: const LoginAdmin(),
+          //home: const LoginAdmin(),
         ),
-        routes: {
-          'alogin': (_) => const LoginAdmin(),
-          'adduser': (_) => const AddUser(),
-          'ulogin': (_) => const LoginUser(),
-          'home': (_) => const Homes(),
-          'ulistu': (_) => const UserListU(),
-          'alista': (_) => const UserListA(),
-          'message': (_) => const MessagesU(),
-          'addimage': (_) => const addimage(),
-        },
-        initialRoute: 'home',
-        //login: const LoginAdmin(),
-        //home: const LoginAdmin(),
       ),
     );
   }

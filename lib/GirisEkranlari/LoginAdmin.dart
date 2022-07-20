@@ -13,6 +13,7 @@ import 'package:rc_android/public/Input_decor.dart';
 var adminusername = TextEditingController();
 var adminpassword = TextEditingController();
 final formKey = GlobalKey<FormState>();
+String err;
 
 class LoginAdmin extends StatelessWidget {
   const LoginAdmin({Key key}) : super(key: key);
@@ -81,7 +82,7 @@ class LoginAdmin extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 const SizedBox(height: 30),
-                Container(
+                SizedBox(
                   child: Form(
                     key: formKey,
                     child: Padding(
@@ -98,7 +99,7 @@ class LoginAdmin extends StatelessWidget {
                             textInputAction: TextInputAction.next,
                             validator: (usera) {
                               if (usera == null || usera.isEmpty) {
-                                return "kullanıcı Adı Giriniz.";
+                                return err.toString();
                               } else {
                                 return null;
                               }
@@ -125,11 +126,20 @@ class LoginAdmin extends StatelessWidget {
                                 print("$adminusername, $adminpassword");
                                 print(adminprovider.admins);
                                 clear();
+                              } else {
+                                if (adminusername.text == "" ||
+                                    adminusername.text == null &&
+                                        adminpassword.text == "" ||
+                                    adminpassword.text == null) {
+                                  err = "kullanıcı Adı ve Şifre Giriniz.";
+                                } else {
+                                  err = "yanlış kullanıcı adı veya şifre";
+                                }
                               }
                             },
                             validator: (passa) {
                               if (passa == null || passa.isEmpty) {
-                                return "kullanıcı Adı Giriniz.";
+                                return err.toString();
                               } else {
                                 return null;
                               }

@@ -39,7 +39,7 @@ class _UserListUState extends State<UserListU> {
     });
     return WillPopScope(
       onWillPop: () async {
-        userstatprovider.getuserstats(statall, stuname, stpass, false);
+        logout(userstatprovider);
         await Navigator.pushReplacementNamed(context, 'ulogin');
         return null;
       },
@@ -67,7 +67,7 @@ class _UserListUState extends State<UserListU> {
             icon: const Icon(Icons.arrow_back),
             tooltip: 'Comment Icon',
             onPressed: () {
-              userstatprovider.getuserstats(statall, stuname, stpass, false);
+              logout(userstatprovider);
               Navigator.pushReplacementNamed(context, 'ulogin');
             },
           ),
@@ -160,5 +160,9 @@ class _UserListUState extends State<UserListU> {
         )),
       ),
     );*/
+  }
+
+  void logout(userstat_provider userstatprovider) {
+    userstatprovider.getuserstats(statall, stuname, stpass, false);
   }
 }
