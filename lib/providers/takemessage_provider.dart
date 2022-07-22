@@ -15,6 +15,8 @@ final urlapi = url;
 class takemessage_provider with ChangeNotifier {
   List<Mesaj> message = [];
   List usermessage = [];
+  List sendermessage = [];
+  List recievermessage = [];
 
   takemessage_provider() {
     takemessage();
@@ -28,6 +30,7 @@ class takemessage_provider with ChangeNotifier {
       'Content-type': 'application/json',
       'Accept': 'application/json'
     });
+    message = mesajFromJson(rsp.body);
     usermessage = message
         .where((e) =>
             e.kullaniciAdiG == userinfo.toString() &&
@@ -35,8 +38,19 @@ class takemessage_provider with ChangeNotifier {
             e.kullaniciAdiA == userinfo.toString() &&
                 e.kullaniciAdiG == ruser.toString())
         .toList();
-    print(usermessage);
-    message = mesajFromJson(rsp.body);
+
+    /*sendermessage =
+        message.where((e) => e.messageType == "sender$userinfo").toList();
+
+    recievermessage =
+        message.where((e) => e.messageType == "sender$ruser").toList();
+
+    print(sendermessage);
+
+    print(recievermessage);
+
+     print(sendermessage);*/
+
     return "sucsess";
   }
 }

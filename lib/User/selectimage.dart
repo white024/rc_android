@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, missing_return
+
 import 'package:flutter/material.dart';
 
 class addimage extends StatefulWidget {

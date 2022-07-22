@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, unused_import, avoid_print, prefer_is_empty, camel_case_types, duplicate_ignore, file_names, unused_local_variable
+// ignore_for_file: deprecated_member_use, unused_import, avoid_print, prefer_is_empty, camel_case_types, duplicate_ignore, file_names, unused_local_variable, unnecessary_import
 
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
@@ -32,16 +32,18 @@ class LoginAdmin extends StatelessWidget {
         Navigator.pushReplacementNamed(context, 'home');
         return null;
       },
-      child: Scaffold(
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Stack(
-            children: [
-              loginupadmin(size),
-              icontext(),
-              logindownadmin(context),
-            ],
+      child: SafeArea(
+        child: Scaffold(
+          body: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Stack(
+              children: [
+                loginupadmin(size),
+                icontext(),
+                logindownadmin(context),
+              ],
+            ),
           ),
         ),
       ),
@@ -61,7 +63,7 @@ class LoginAdmin extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.symmetric(horizontal: 30),
             width: double.infinity,
-            height: 410,
+            height: 390,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(40),
@@ -169,7 +171,7 @@ class LoginAdmin extends StatelessWidget {
                                       context, 'home');
                                 },
                               ),
-                              const SizedBox(width: 55),
+                              const SizedBox(width: 40),
                               MaterialButton(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20)),
@@ -228,7 +230,7 @@ class LoginAdmin extends StatelessWidget {
         margin: const EdgeInsets.only(top: 80),
         width: double.infinity,
         child: const Icon(
-          Icons.admin_panel_settings,
+          Icons.admin_panel_settings_outlined,
           color: Colors.white,
           size: 100,
         ),
@@ -237,37 +239,41 @@ class LoginAdmin extends StatelessWidget {
   }
 }
 
-Container loginupadmin(Size size) {
+SafeArea loginupadmin(Size size) {
   return loginpanelcolor(size);
 }
 
-Container loginpanelcolor(Size size) {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(40),
-      gradient: const LinearGradient(
-        colors: [
-          Color.fromARGB(255, 66, 10, 150),
-          Color.fromARGB(255, 150, 10, 122),
-          Color.fromARGB(246, 150, 10, 26),
-        ],
+SafeArea loginpanelcolor(Size size) {
+  return SafeArea(
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(40),
+        gradient: const LinearGradient(
+          colors: [
+            Color.fromARGB(255, 66, 10, 150),
+            Color.fromARGB(255, 150, 10, 122),
+            Color.fromARGB(246, 150, 10, 26),
+          ],
+        ),
       ),
+      width: double.infinity,
+      height: size.height * 0.5,
+      child: adminpaneltext(),
     ),
-    width: double.infinity,
-    height: size.height * 0.5,
-    child: adminpaneltext(),
   );
 }
 
-Container adminpaneltext() {
-  return Container(
-    padding: const EdgeInsets.only(top: 22),
-    child: const SafeArea(
-      child: Text(
-        "Admin Paneli",
-        style: TextStyle(
-            color: Colors.white, fontStyle: FontStyle.italic, fontSize: 39),
-        textAlign: TextAlign.center,
+SafeArea adminpaneltext() {
+  return SafeArea(
+    child: Container(
+      padding: const EdgeInsets.only(top: 22),
+      child: const SafeArea(
+        child: Text(
+          "Admin Paneli",
+          style: TextStyle(
+              color: Colors.white, fontStyle: FontStyle.italic, fontSize: 39),
+          textAlign: TextAlign.center,
+        ),
       ),
     ),
   );

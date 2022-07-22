@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rc_android/Admin/AddUser.dart';
@@ -14,6 +16,7 @@ import 'package:rc_android/providers/deletemessage_provider.dart';
 import 'package:rc_android/providers/deleteuser_provider.dart';
 import 'package:rc_android/providers/sendmesage_provider.dart';
 import 'package:rc_android/providers/takemessage_provider.dart';
+import 'package:rc_android/providers/takemessage_providerfortest.dart';
 import 'package:rc_android/providers/updateuser_provider.dart';
 import 'package:rc_android/providers/uploadimage_provider.dart';
 import 'package:rc_android/providers/user_provider.dart';
@@ -21,7 +24,9 @@ import 'package:flutter/services.dart';
 import 'package:rc_android/providers/userlistu_provider.dart';
 import 'package:rc_android/providers/userstat_provider.dart';
 import 'package:rc_android/public/appstate.dart';
+import 'package:rc_android/public/deneme.dart';
 import 'package:rc_android/public/stat.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 //import 'package:rc_android/GirisEkranlari/LoginAdmin.dart';
 
 Future main() async {
@@ -49,12 +54,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => userstat_provider()),
           ChangeNotifierProvider(create: (_) => deletemessage_provider()),
           ChangeNotifierProvider(create: (_) => addimage_provider()),
+          ChangeNotifierProvider(create: (_) => takemessage_provider_test()),
         ],
         child: MaterialApp(
-          title: 'Home',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
           routes: {
             'alogin': (_) => const LoginAdmin(),
             'adduser': (_) => const AddUser(),
@@ -64,6 +66,7 @@ class MyApp extends StatelessWidget {
             'alista': (_) => const UserListA(),
             'message': (_) => const MessagesU(),
             'addimage': (_) => const addimage(),
+            'test': (_) => const denemee(),
           },
           initialRoute: 'home',
           //login: const LoginAdmin(),

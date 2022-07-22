@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, avoid_types_as_parameter_names, avoid_print, non_constant_identifier_names, use_build_context_synchronously
+// ignore_for_file: deprecated_member_use, avoid_types_as_parameter_names, avoid_print, non_constant_identifier_names, use_build_context_synchronously, unused_import, unnecessary_import, file_names, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,16 +32,18 @@ class _AddUserState extends State<AddUser> {
         Navigator.pushReplacementNamed(context, 'alogin');
         return null;
       },
-      child: Scaffold(
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Stack(
-            children: [
-              Adduserup(size),
-              const Addusericon(),
-              Adduserdown(context),
-            ],
+      child: SafeArea(
+        child: Scaffold(
+          body: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Stack(
+              children: [
+                Adduserup(size),
+                const Addusericon(),
+                Adduserdown(context),
+              ],
+            ),
           ),
         ),
       ),
@@ -62,7 +64,7 @@ class _AddUserState extends State<AddUser> {
             padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.symmetric(horizontal: 30),
             width: double.infinity,
-            height: 500,
+            height: 430,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(40),
@@ -161,8 +163,8 @@ class _AddUserState extends State<AddUser> {
                                   await controll(context);
                                 });
                                 await Addusercmd(adduserprovider, userprovider);
-                                Future.delayed(Duration(milliseconds: 1000),
-                                    () {
+                                Future.delayed(
+                                    const Duration(milliseconds: 1000), () {
                                   myFocusNode.requestFocus();
                                 });
                               }
@@ -221,13 +223,14 @@ class _AddUserState extends State<AddUser> {
                                       await Addusercmd(
                                           adduserprovider, userprovider);
                                       Future.delayed(
-                                          Duration(milliseconds: 1000), () {
+                                          const Duration(milliseconds: 1000),
+                                          () {
                                         myFocusNode.requestFocus();
                                       });
                                     }
                                   }),
                               const SizedBox(
-                                width: 45,
+                                width: 30,
                               ),
                               MaterialButton(
                                   shape: RoundedRectangleBorder(
@@ -248,12 +251,12 @@ class _AddUserState extends State<AddUser> {
                             ],
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Row(
                             children: [
                               const SizedBox(
-                                width: 89,
+                                width: 85,
                               ),
                               MaterialButton(
                                   shape: RoundedRectangleBorder(
@@ -330,7 +333,7 @@ class _AddUserState extends State<AddUser> {
     Future.delayed(const Duration(milliseconds: 700), () {
       AlertDialog alert = AlertDialog(
         title: const Text("Hata"),
-        content: Text("Aynı kullanıcı adına sahip biri var"),
+        content: const Text("Aynı kullanıcı adına sahip biri var"),
         actions: [
           FlatButton(
               onPressed: () {
@@ -377,32 +380,36 @@ class _AddUserState extends State<AddUser> {
     ipcon.clear();
   }
 
-  Container Adduserpaneltext() {
-    return Container(
-      padding: const EdgeInsets.only(top: 22),
-      child: const SafeArea(
-        child: Text(
-          "Kullanıcı Ekle",
-          style: TextStyle(
-              color: Colors.white, fontStyle: FontStyle.italic, fontSize: 39),
-          textAlign: TextAlign.center,
+  SafeArea Adduserpaneltext() {
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.only(top: 22),
+        child: const SafeArea(
+          child: Text(
+            "Kullanıcı Ekle",
+            style: TextStyle(
+                color: Colors.white, fontStyle: FontStyle.italic, fontSize: 39),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
   }
 
-  Container Adduserup(Size size) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
-          gradient: const LinearGradient(colors: [
-            Color.fromARGB(255, 0, 0, 0),
-            Color.fromARGB(255, 164, 0, 0),
-            Color.fromARGB(255, 0, 0, 0),
-          ])),
-      width: double.infinity,
-      height: size.height * 0.4,
-      child: Adduserpaneltext(),
+  SafeArea Adduserup(Size size) {
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            gradient: const LinearGradient(colors: [
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 164, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
+            ])),
+        width: double.infinity,
+        height: size.height * 0.5,
+        child: Adduserpaneltext(),
+      ),
     );
   }
 }

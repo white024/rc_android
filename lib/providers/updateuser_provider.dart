@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, non_constant_identifier_names, unused_element, unnecessary_new, unnecessary_string_interpolations, unused_import
+
 import 'dart:collection';
 import 'dart:convert';
 

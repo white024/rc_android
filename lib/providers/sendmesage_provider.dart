@@ -21,13 +21,14 @@ class sendmessage_provider with ChangeNotifier {
     getsendmessages();
   }*/
 
-  getsendmessages(usersd, userrc, messagec, mtype) async {
+  getsendmessages(usersd, userrc, messagec, mtype, time, date) async {
     Map<String, dynamic> send = {
       'kullaniciAdiG': usersd,
       'kullaniciAdiA': userrc,
       'mesaj': messagec,
       'messageType': mtype,
-      "IdGNavigation": null,
+      'saat': time,
+      'tarih': date
     };
     final url0 = Uri.http(urlapi, 'api/mesaj');
 

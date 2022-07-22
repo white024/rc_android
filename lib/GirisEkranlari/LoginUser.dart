@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, prefer_is_empty, avoid_print, non_constant_identifier_names
+// ignore_for_file: deprecated_member_use, prefer_is_empty, avoid_print, non_constant_identifier_names, file_names, unused_import, sized_box_for_whitespace, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -39,17 +39,19 @@ class _LoginUserState extends State<LoginUser> {
         Navigator.pushReplacementNamed(context, 'home');
         return null;
       },
-      child: Scaffold(
-          body: Container(
-              width: double.infinity,
-              height: double.infinity,
-              child: Stack(
-                children: [
-                  Userloginup(size),
-                  Usericon(),
-                  Userlogindown(context),
-                ],
-              ))),
+      child: SafeArea(
+        child: Scaffold(
+            body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: Stack(
+                  children: [
+                    Userloginup(size),
+                    Usericon(),
+                    Userlogindown(context),
+                  ],
+                ))),
+      ),
     );
   }
 
@@ -68,7 +70,7 @@ class _LoginUserState extends State<LoginUser> {
             padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.symmetric(horizontal: 30),
             width: double.infinity,
-            height: 395,
+            height: 380,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(40),
@@ -258,33 +260,37 @@ class _LoginUserState extends State<LoginUser> {
     );
   }
 
-  Container Userloginup(Size size) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromARGB(255, 0, 0, 0),
-            Color.fromARGB(255, 255, 179, 0),
-            Color.fromARGB(255, 0, 0, 0),
-          ],
+  SafeArea Userloginup(Size size) {
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          gradient: const LinearGradient(
+            colors: [
+              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 255, 179, 0),
+              Color.fromARGB(255, 0, 0, 0),
+            ],
+          ),
         ),
+        width: double.infinity,
+        height: size.height * 0.5,
+        child: Userpaneltext(),
       ),
-      width: double.infinity,
-      height: size.height * 0.4,
-      child: Userpaneltext(),
     );
   }
 
-  Container Userpaneltext() {
-    return Container(
-      padding: const EdgeInsets.only(top: 22),
-      child: const SafeArea(
-        child: Text(
-          "Kullanıcı Paneli",
-          style: TextStyle(
-              color: Colors.black, fontStyle: FontStyle.italic, fontSize: 40),
-          textAlign: TextAlign.center,
+  SafeArea Userpaneltext() {
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.only(top: 22),
+        child: const SafeArea(
+          child: Text(
+            "Kullanıcı Paneli",
+            style: TextStyle(
+                color: Colors.black, fontStyle: FontStyle.italic, fontSize: 40),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );

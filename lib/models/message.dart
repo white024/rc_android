@@ -13,39 +13,39 @@ String mesajToJson(List<Mesaj> data) =>
 class Mesaj {
   Mesaj({
     this.mesajNo,
-    this.idG,
-    this.idAlici,
     this.kullaniciAdiG,
     this.kullaniciAdiA,
     this.mesaj,
     this.messageType,
+    this.saat,
+    this.tarih,
   });
 
   int mesajNo;
-  int idG;
-  String idAlici;
   String kullaniciAdiG;
   String kullaniciAdiA;
   String mesaj;
   String messageType;
+  String saat;
+  dynamic tarih;
 
   factory Mesaj.fromJson(Map<String, dynamic> json) => Mesaj(
         mesajNo: json["mesajNo"],
-        idG: json["idG"],
-        idAlici: json["idAlici"],
         kullaniciAdiG: json["kullaniciAdiG"],
         kullaniciAdiA: json["kullaniciAdiA"],
         mesaj: json["mesaj"],
         messageType: json["messageType"],
+        saat: json["saat"],
+        tarih: json["tarih"],
       );
 
   Map<String, dynamic> toJson() => {
         "mesajNo": mesajNo,
-        "idG": idG,
-        "idAlici": idAlici,
         "kullaniciAdiG": kullaniciAdiG,
         "kullaniciAdiA": kullaniciAdiA,
         "mesaj": mesaj,
         "messageType": messageType,
+        "saat": saat,
+        "tarih": tarih,
       };
 }

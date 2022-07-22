@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, missing_return, prefer_interpolation_to_compose_strings, avoid_print
+// ignore_for_file: deprecated_member_use, missing_return, prefer_interpolation_to_compose_strings, avoid_print, unused_local_variable, file_names
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +19,7 @@ class UserListU extends StatefulWidget {
 String ruser;
 String stt;
 int index;
+bool _isLoading = false;
 
 class _UserListUState extends State<UserListU> {
   @override
@@ -30,13 +31,21 @@ class _UserListUState extends State<UserListU> {
 
     Future.delayed(const Duration(milliseconds: 2500), () async {
       setState(() {
+        _isLoading = true;
+      });
+      setState(() {
         userprovideru.getusersu();
         stt;
       });
+      setState(() {
+        _isLoading = false;
+      });
+      print(_isLoading);
     });
     setState(() {
       userprovideru.getusersu();
     });
+
     return WillPopScope(
       onWillPop: () async {
         logout(userstatprovider);
@@ -131,7 +140,7 @@ class _UserListUState extends State<UserListU> {
               },
             ),
             onRefresh: () async {
-              await Future.delayed(const Duration(milliseconds: 1500));
+              await Future.delayed(const Duration(milliseconds: 2000));
               setState(() {
                 userprovideru.getusersu();
               });

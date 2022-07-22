@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides, library_private_types_in_public_api, avoid_print, prefer_const_constructors_in_immutables
+// ignore_for_file: annotate_overrides, library_private_types_in_public_api, avoid_print, prefer_const_constructors_in_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

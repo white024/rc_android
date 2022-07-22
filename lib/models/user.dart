@@ -2,6 +2,8 @@
 //
 //     final user = userFromJson(jsonString);
 
+// ignore_for_file: camel_case_types, prefer_if_null_operators
+
 import 'dart:convert';
 
 List<user> userFromJson(String str) =>

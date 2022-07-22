@@ -1,11 +1,10 @@
-// ignore_for_file: avoid_print, non_constant_identifier_names, duplicate_ignore, missing_return, unused_import
-
-import 'dart:convert';
+// ignore_for_file: unused_import, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rc_android/GirisEkranlari/LoginUser.dart';
-import 'package:rc_android/models/user.dart';
+import 'package:rc_android/User/UserListU.dart';
+import 'package:rc_android/models/message.dart';
 import '../cons.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,23 +12,20 @@ import 'package:http/http.dart' as http;
 final urlapi = url;
 
 // ignore: camel_case_types
-class user_provider with ChangeNotifier {
-  List<user> users = [];
+class takemessage_provider_test with ChangeNotifier {
+  List<Mesaj> message = [];
 
-  user_provider() {
-    getusers();
-  }
-
-  Future<String> getusers() async {
-    final url0 = Uri.http(urlapi, 'api/kullanici');
+  Future<String> takemessage_test() async {
+    final url0 = Uri.http(urlapi, 'api/mesaj');
     final rsp = await http.get(url0, headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": "true",
       'Content-type': 'application/json',
       'Accept': 'application/json'
     });
-    users = userFromJson(rsp.body);
 
+    message = mesajFromJson(rsp.body);
+    print(message);
     return "sucsess";
   }
 }
