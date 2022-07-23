@@ -2,6 +2,8 @@
 //
 //     final user = userFromJson(jsonString);
 
+// ignore_for_file: prefer_if_null_operators
+
 import 'dart:convert';
 
 List<User> userFromJson(String str) =>

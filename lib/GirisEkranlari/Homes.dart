@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, file_names, sort_child_properties_last
+// ignore_for_file: deprecated_member_use, file_names, sort_child_properties_last, avoid_print
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart' hide DismissDirection;
@@ -14,23 +14,23 @@ class Homes extends StatefulWidget {
 class _HomesState extends State<Homes> {
   final colorizeColors = [
     Colors.purple,
-    Color.fromARGB(255, 85, 85, 85),
+    const Color.fromARGB(255, 85, 85, 85),
     Colors.purple,
-    Color.fromARGB(255, 86, 86, 86),
+    const Color.fromARGB(255, 86, 86, 86),
   ];
 
-  final colorizeTextStyle = TextStyle(
+  final colorizeTextStyle = const TextStyle(
     fontSize: 40,
     fontFamily: 'Horizon',
   );
   final colorizeColors2 = [
-    Color.fromARGB(255, 160, 160, 160),
-    Color.fromARGB(255, 255, 255, 255),
-    Color.fromARGB(255, 148, 148, 148),
-    Color.fromARGB(255, 255, 255, 255),
+    const Color.fromARGB(255, 160, 160, 160),
+    const Color.fromARGB(255, 255, 255, 255),
+    const Color.fromARGB(255, 148, 148, 148),
+    const Color.fromARGB(255, 255, 255, 255),
   ];
 
-  final colorizeTextStyle2 = TextStyle(
+  final colorizeTextStyle2 = const TextStyle(
     fontSize: 25,
     fontFamily: 'Horizon',
   );
@@ -209,7 +209,7 @@ class _HomesState extends State<Homes> {
                     child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        color: Color.fromARGB(255, 212, 14, 0),
+                        color: const Color.fromARGB(255, 212, 14, 0),
                         child: const Text(
                           "test",
                           style: TextStyle(fontSize: 16.5),

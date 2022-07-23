@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// ignore_for_file: curly_braces_in_flow_control_structures, must_be_immutable, missing_return
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 
@@ -420,6 +422,7 @@ class _DismissiblemyState extends State<Dismissiblemy>
         _dragExtent = 0;
         break;
       case DismissDirection.all:
+        // ignore: todo
         // TODO: Handle this case.
         break;
     }
