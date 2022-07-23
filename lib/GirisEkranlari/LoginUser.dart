@@ -215,9 +215,9 @@ class _LoginUserState extends State<LoginUser> {
     );
   }
 
-  user us;
+  User us;
 
-  Future loginu(List<user> users, BuildContext context,
+  Future loginu(List<User> users, BuildContext context,
       userstat_provider userstatprovider, user_provider userprovider) async {
     if (userprovider.users
             .where((e) => e.kullaniciAdiU == stuname && e.sifre == stpass) !=

@@ -2,34 +2,35 @@
 //
 //     final user = userFromJson(jsonString);
 
-// ignore_for_file: camel_case_types, prefer_if_null_operators
-
 import 'dart:convert';
 
-List<user> userFromJson(String str) =>
-    List<user>.from(json.decode(str).map((x) => user.fromJson(x)));
+List<User> userFromJson(String str) =>
+    List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
 
-String userToJson(List<user> data) =>
+String userToJson(List<User> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class user {
-  user({
+class User {
+  User({
     this.idKullanici,
     this.kullaniciAdiU,
     this.sifre,
     this.durum,
+    this.profil,
   });
 
   int idKullanici;
   String kullaniciAdiU;
   String sifre;
   bool durum;
+  dynamic profil;
 
-  factory user.fromJson(Map<String, dynamic> json) => user(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         idKullanici: json["idKullanici"],
         kullaniciAdiU: json["kullaniciAdiU"],
         sifre: json["sifre"],
         durum: json["durum"] == null ? null : json["durum"],
+        profil: json["profil"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,5 +38,6 @@ class user {
         "kullaniciAdiU": kullaniciAdiU,
         "sifre": sifre,
         "durum": durum == null ? null : durum,
+        "profil": profil,
       };
 }

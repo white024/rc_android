@@ -13,7 +13,7 @@ final urlapi = url;
 
 // ignore: camel_case_types
 class AUserList_provider with ChangeNotifier {
-  List<user> auserlists = [];
+  List<User> auserlists = [];
 
   AUserList_provider() {
     getauserlists();

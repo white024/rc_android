@@ -12,7 +12,7 @@ final urlapi = url;
 
 // ignore: camel_case_types
 class delete_provider with ChangeNotifier {
-  List<user> dellusers = [];
+  List<User> dellusers = [];
 
   /*delete_provider() {
     getdelusers();

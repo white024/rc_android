@@ -15,7 +15,7 @@ final urlapi = url;
 
 // ignore: camel_case_types
 class updateuser_provider with ChangeNotifier {
-  List<user> updusers = [];
+  List<User> updusers = [];
 
   /*adduser_provider() {
     getaddusers();

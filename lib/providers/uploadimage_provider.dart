@@ -16,7 +16,7 @@ int adduserstatus;
 
 // ignore: camel_case_types
 class addimage_provider with ChangeNotifier {
-  List<user> addimages = [];
+  List<User> addimages = [];
 
   /*adduser_provider() {
     getaddusers();
